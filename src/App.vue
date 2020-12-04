@@ -1,29 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <img alt="Vue logo" src="./assets/mike-v2.png">
+    <TheUserInput @response="updateRepos" @update-type-res="updateTypeOfResponse" :typeresp="typeOfResponse"></TheUserInput>
+    <Timeline v-show="typeOfResponse" :repoData="repos"></Timeline>
+    <!-- {{this.repos}} -->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import TheUserInput from './components/TheUserInput.vue';
+import Timeline from './components/Timeline.vue';
+
+import { Response } from '@/types';
+
+// Token: 15babcf3ad9ee5a70cf915795e85d575cb6495da
 
 @Component({
   components: {
-    HelloWorld,
+    TheUserInput,
+    Timeline,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private repos: Array<object> = [];
+  private typeOfResponse = false;
+
+  public updateRepos(repos: Array<object>) {
+    this.repos = repos;
+  }
+
+  public updateTypeOfResponse(typeOfResponse: boolean) {
+    this.typeOfResponse = typeOfResponse;
+  }
+}
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+text-align: center;
 }
 </style>
