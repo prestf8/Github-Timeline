@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/mike-v2.png">
+    <img alt="Vue logo" src="./assets/logo.png">
     <TheUserInput @response="updateRepos" @update-type-res="updateTypeOfResponse" :typeresp="typeOfResponse"></TheUserInput>
     <Timeline v-show="typeOfResponse" :repoData="repos"></Timeline>
     <!-- {{this.repos}} -->
@@ -37,7 +37,18 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+
+$app-background: #212121;
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
 #app {
-text-align: center;
+  text-align: center;
+  background-color: $app-background;
+  min-height: 100vh;
 }
 </style>

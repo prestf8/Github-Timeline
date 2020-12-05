@@ -1,14 +1,14 @@
 <template>
     <main class="repository">
         <section class="repository__title">
-            {{this.repoName}}
+            <p class="repository__title-content">{{this.repoName}}</p>
         </section>
         <section class="repository__desc">
-            {{this.repoDesc}}
+            <p class="repository__desc-content">{{this.repoDesc}}</p>
         </section>
         <section class="repository__date-info">
-            <p class="repository_created"><b>Created:</b> {{this.repoCreated}}</p>
-            <p class="repository_updated"><b>Last Updated:</b> {{this.repoUpdated}}</p>
+            <p class="repository-date-info repository-date-info--created"><b>Created:</b> {{this.repoCreated}}</p>
+            <p class="repository-date-info repository-date-info--updated"><b>Last Updated:</b> {{this.repoUpdated}}</p>
         </section>
         
     </main>
@@ -87,22 +87,50 @@ export default class RepositoryFormat extends Vue {
     font-family: $font, 'sans-serif';
 }
 
+@mixin displayFlex($j, $a, $direction, $typeofWrap) {
+    display: flex;
+    justify-content: $j;
+    align-items: $a;
+    flex-flow: $typeofWrap $direction;
+}
+
 .repository {
-    padding: 1.5rem;
+    @include displayFlex(stretch, stretch, column, nowrap);
+    height: 100%;
+    width: 100%;
+    background: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0.5rem;
 }
 
 .repository__title {
     @include changeFont('Source Sans Pro');
     font-weight: bold;
+    flex: 1;
+    @include displayFlex(center, center, row, nowrap);
 }
 
 .repository__desc {
     padding: 0.5rem 1rem;
+    flex: 2;
+    @include displayFlex(center, center, row, nowrap);
 }
 
 .repository__date-info {
-    margin-top: 3rem;
     text-align: left;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 500px) {
+    .repository {
+
+    }
+
+    .repository-date-info {
+        display: none;   
+    }
 }
 
 

@@ -1,6 +1,6 @@
 <template>
     <div class="timeline">
-        <p class="timeline__length">{{this.reposLength}} Repositories (100 Max)</p>
+        <p class="timeline__length">{{this.reposLength}} Public Repositories (100 Max)</p>
         <ul class="timeline__repos">
             <li class="timeline__repo-li" :class="index%2==0 ? 'right' : 'left'" v-for="(repo, index) in this.repoData" :key="repo.name">
                 <RepositoryFormat :repository="repo"></RepositoryFormat>
@@ -52,43 +52,81 @@ export default class Timeline extends Vue {
     margin: 0 auto;
     
     position: relative;
-    background-color: lightskyblue;
 }
 
-.timeline__repos::after {
+.timeline__repos:after {
     content: '';
     position: absolute;
     top:0;
     bottom:0;
     left: 50%;
     transform: translate(-50%);
-
-
-    width: 5px;
-    background-color: black;
+    width: 8px;
+    background-color: lightgreen;
 }
 
 .timeline__repo-li {
     list-style: none;
-    width: 35%;
-    min-height: 150px;
-
+    width: 50%;
+    height: 270px;
     margin-top: 1rem;
-    border: 1px solid black;
+    border: none;
+    border-radius: 5px;
+    padding: 2rem;
+
     position: relative;
-    
 }
 
-.right {
-    background-color: green;
-    left: 25%;
-    transform: translateX(-50%);
+.timeline__repo-li:after {
+    position: absolute;
+    content: ' ';
+    width: 20px;
+    height: 20px;
+    border: 5px solid lightgreen;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 1;
 }
 
 .left {
-    background-color: blue;
-    left: 75%;
-    transform: translateX(-50%);
+    left: 0%;
+    /* transform: translateX(-50%); */
+}
 
+.left:after {
+    top: 1rem;
+    right:0;
+    transform: translateX(50%); 
+}
+
+.right {
+    left: 50%; 
+    /* transform: translateX(-50%); */
+}
+
+.right:after {
+    top: 1rem;
+    left:0;
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 700px) {
+    .timeline__repos:after {
+        left: 1rem;
+        transform: translateX(0);
+    }
+
+    .timeline__repo-li {
+        left: 0;
+        width: 100%;
+        padding:3rem;
+    }
+
+    .timeline__repo-li:after {
+        left: 0;
+        top: 3rem;
+        transform: translateX(0);
+        margin-left: 4px;
+    }
 }
 </style>
