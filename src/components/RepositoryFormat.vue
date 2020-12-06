@@ -81,7 +81,10 @@ export default class RepositoryFormat extends Vue {
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+$vue-color-one: #009c63;
+$vue-color-two: #163f61;
 
 @mixin changeFont($font) {
     font-family: $font, 'sans-serif';
@@ -98,38 +101,54 @@ export default class RepositoryFormat extends Vue {
     @include displayFlex(stretch, stretch, column, nowrap);
     height: 100%;
     width: 100%;
-    background: white;
-    border: 2px solid black;
+    background: lightgreen;
+    border: 8px solid $vue-color-two;
     border-radius: 5px;
     padding: 0.5rem;
+    min-height: 150px;
 }
 
 .repository__title {
-    @include changeFont('Source Sans Pro');
     font-weight: bold;
+    padding: .5rem;
     flex: 1;
+    @include changeFont('Source Sans Pro');
     @include displayFlex(center, center, row, nowrap);
 }
 
 .repository__desc {
+    font-size: 0.9rem;
     padding: 0.5rem 1rem;
-    flex: 2;
+    flex: 1;
+    @include changeFont('Poppins');
     @include displayFlex(center, center, row, nowrap);
 }
 
 .repository__date-info {
+    display: none;
     text-align: left;
     margin-left: 1rem;
     margin-bottom: 1rem;
+    margin-top: 2rem;
+    flex: 2;
+    @include changeFont('Nanum Gothic');
 }
 
-@media screen and (max-width: 500px) {
-    .repository {
-
+@media screen and (min-width: 500px) {
+    .repository__date-info {
+        display: block;
+        @include displayFlex(flex-end, flex-start, nowrap, column)
     }
 
-    .repository-date-info {
-        display: none;   
+    .repository__title {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .repository__title {
+        font-size: 1.4rem;
     }
 }
 

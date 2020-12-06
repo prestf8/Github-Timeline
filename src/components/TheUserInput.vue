@@ -78,8 +78,24 @@ export default class TheUserInput extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.user-input__error--red {
-    color: red;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+@mixin changeFont($font) {
+    font-family: $font, 'sans-serif';
 }
+
+.user-input__input-label {
+    @include changeFont('Source Sans Pro');
+
+}
+
+// Error message / Status Message
+.user-input__error--red {
+    margin-top: 3rem;
+    color: red;
+    @include changeFont('Source Sans Pro');
+}
+
+
 
 </style>

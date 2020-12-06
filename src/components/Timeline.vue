@@ -27,11 +27,14 @@ export default class Timeline extends Vue {
     }
 
 // Repo names, Date, Descriptions 
-
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+$vue-color-one: #009c63;
+$vue-color-two: #1a4b73;
 
 * {
     margin: 0;
@@ -40,18 +43,24 @@ export default class Timeline extends Vue {
 
 .timeline {
     margin-top: 3rem;
+    padding: 1rem;
 }
 
 .timeline__length {
-    font-weight: bold;
+    /* float: right; */
+    margin: 1rem;
+    color: white;
+
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .timeline__repos {
     /* background-color: lightcoral; */
     max-width: 900px;
     margin: 0 auto;
-    
     position: relative;
+    background-color: inherit;
+    border: none;
 }
 
 .timeline__repos:after {
@@ -59,20 +68,21 @@ export default class Timeline extends Vue {
     position: absolute;
     top:0;
     bottom:0;
-    left: 50%;
-    transform: translate(-50%);
     width: 8px;
-    background-color: lightgreen;
+    background-color: $vue-color-one;
+
+    left: 1rem;
+    transform: translateX(0);
 }
 
 .timeline__repo-li {
     list-style: none;
-    width: 50%;
-    height: 270px;
+    width: 100%;
     margin-top: 1rem;
     border: none;
-    border-radius: 5px;
-    padding: 2rem;
+    border-radius: 5px; 
+    padding: 3rem;
+    min-height: 200px;
 
     position: relative;
 }
@@ -82,51 +92,59 @@ export default class Timeline extends Vue {
     content: ' ';
     width: 20px;
     height: 20px;
-    border: 5px solid lightgreen;
+    border: 5px solid $vue-color-one;
     border-radius: 50%;
     background-color: white;
     z-index: 1;
+
+    left: 0;
+    top: 3rem;
+    transform: translateX(0);
+    margin-left: 4px;
 }
 
-.left {
-    left: 0%;
-    /* transform: translateX(-50%); */
-}
+@media screen and (min-width: 600px) {
 
-.left:after {
-    top: 1rem;
-    right:0;
-    transform: translateX(50%); 
-}
+    .timeline__length {
+        font-size: 1.2rem;
+    }
 
-.right {
-    left: 50%; 
-    /* transform: translateX(-50%); */
-}
+    .timeline__repos {
+        border: 6px solid $vue-color-one;
 
-.right:after {
-    top: 1rem;
-    left:0;
-    transform: translateX(-50%);
-}
+    }
 
-@media screen and (max-width: 700px) {
     .timeline__repos:after {
-        left: 1rem;
-        transform: translateX(0);
+        left: 50%;
+        transform: translate(-50%);
     }
 
     .timeline__repo-li {
-        left: 0;
-        width: 100%;
-        padding:3rem;
+        width: 50%;
+        padding: 2rem;
     }
 
     .timeline__repo-li:after {
-        left: 0;
-        top: 3rem;
-        transform: translateX(0);
-        margin-left: 4px;
+        margin-left: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .left {
+        left:0;
+    }
+
+    .left:after {
+        left: 100%;
+    } 
+
+    .right {
+        left: 50%;
+    }
+
+    .right:after {
+        left:0;
+        /* transform: translateX(50%); */
     }
 }
 </style>
