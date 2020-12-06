@@ -102,7 +102,7 @@ $vue-color-two: #163f61;
     height: 100%;
     width: 100%;
     background: lightgreen;
-    border: 8px solid $vue-color-two;
+    border: 8px solid $vue-color-one;
     border-radius: 5px;
     padding: 0.5rem;
     min-height: 150px;

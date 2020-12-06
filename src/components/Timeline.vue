@@ -35,6 +35,7 @@ export default class Timeline extends Vue {
 
 $vue-color-one: #009c63;
 $vue-color-two: #1a4b73;
+$temp-color: #353535;
 
 * {
     margin: 0;
@@ -44,6 +45,7 @@ $vue-color-two: #1a4b73;
 .timeline {
     margin-top: 3rem;
     padding: 1rem;
+    background-color: $temp-color;
 }
 
 .timeline__length {
