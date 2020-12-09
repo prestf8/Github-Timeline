@@ -1,4 +1,3 @@
 module.exports = {
-    publicPath: "/VueJS-Github-Timeline",
-    outputDir: "docs"
+    publicPath: '/VueJS-Github-Timeline/'
 };
