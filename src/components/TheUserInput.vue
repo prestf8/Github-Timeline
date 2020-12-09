@@ -69,9 +69,10 @@ export default class TheUserInput extends Vue {
         });
     }
 
+// 15babcf3ad9ee5a70cf915795e85d575cb6495da
     mounted() {
         // Creating octokit object for requests
-        this.octokit = new Octokit({auth: `15babcf3ad9ee5a70cf915795e85d575cb6495da`})
+        this.octokit = new Octokit({auth: `0d0cd7838ce22d9c5a016aaf976dc3e866948acb `})
     }
 }
 </script>
